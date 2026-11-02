@@ -48,10 +48,14 @@ export interface Destination {
   id: string;
   title: string;
   location: string;
-  spanClass: string;
+  spanClass?: string;
   image: string;
   description: string;
   dossier: string;
+  category?: string;
+  duration?: string;
+  price?: string;
+  tagline?: string;
 }
 
 export interface HotNewsItem {
