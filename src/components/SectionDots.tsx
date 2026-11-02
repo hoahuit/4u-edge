@@ -56,7 +56,7 @@ export const SectionDots: React.FC = () => {
         flexDirection: 'column',
         gap: '14px',
       }}
-      className="hidden md:flex"
+      className="hidden lg:flex"
     >
       {SECTIONS.map((sec) => {
         const isActive = activeSection === sec.id;

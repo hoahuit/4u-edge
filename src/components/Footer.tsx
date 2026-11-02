@@ -14,7 +14,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenItemModal }
       ====================================================================== */}
       <div className="container-fullbleed" style={{ padding: '80px clamp(24px, 4vw, 64px) 40px clamp(24px, 4vw, 64px)' }}>
         {/* STRICT 2 COLUMNS (50% / 50%) */}
-        <div className="grid-2-fullscreen" style={{ marginBottom: '48px', paddingBottom: '48px', borderBottom: '1px solid rgba(255, 253, 249, 0.18)' }}>
+        <div className="grid-2-fullscreen footer-main-grid" style={{ marginBottom: '48px', paddingBottom: '48px', borderBottom: '1px solid rgba(255, 253, 249, 0.18)' }}>
           {/* Column 1 of 2: Brand Story & Official Credentials */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenItemModal }
           </div>
 
           {/* Column 2 of 2: Quick Links & Pillar Navigation */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }}>
+          <div className="footer-links-grid" style={{ display: 'grid', gap: '32px' }}>
             <div>
               <h3 className="typo-h3" style={{ color: '#fffdf9', marginBottom: '16px', fontSize: '18px' }}>
                 Uniquely 4U & Services

@@ -264,12 +264,12 @@ body {
   border-bottom: 1px solid var(--border-hairline);
 }
 
-/* STRICT SPECIFICATION: FULL-SCREEN WIDTH & EXACTLY 2 ITEMS PER ROW */
+/* STRICT SPECIFICATION: FULL-SCREEN WIDTH & 2 ITEMS PER ROW (1 COLUMN ON MOBILE) */
 .grid-2-fullscreen {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: clamp(28px, 3.5vw, 56px) !important;
-  width: 100% !important;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 3.2vw, 52px);
+  width: 100%;
   align-items: stretch;
 }
 
@@ -819,46 +819,376 @@ body.show-temp-red .temp-spec-item::after {
   display: block;
 }
 
-/* Responsive Media Queries */
+/* =====================================================================
+   RESPONSIVE DESIGN SYSTEM (MOBILE, TABLET, MACBOOK & LARGE DESKTOP)
+====================================================================== */
+
 .mobile-menu-btn {
   display: none;
 }
 
-@media (max-width: 1180px) {
+.dest-article-card {
+  width: clamp(380px, 40vw, 560px);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid rgba(150, 112, 3, 0.22);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 12px 32px rgba(68, 51, 0, 0.08);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ---------------------------------------------------------------------
+   1. MACBOOK & LAPTOP SCREENS (1024px to 1440px)
+   - Tailored for 13" MacBook Air/Pro (1280x800), 14"/16" MacBook Pro
+   - Single-line navigation, compact header, viewports ~700-850px height
+---------------------------------------------------------------------- */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .main-nav-inner {
+    min-height: 80px;
+    gap: 16px;
+  }
+  .brand-logo-img {
+    height: 52px;
+    max-width: 180px;
+  }
   .desktop-menu-list {
-    display: none;
+    gap: clamp(14px, 1.6vw, 22px);
   }
-  .mobile-menu-btn {
-    display: inline-flex;
+  .typo-nav {
+    font-size: 16px !important;
   }
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .header-book-btn {
+    padding: 10px 18px !important;
+    font-size: 15px !important;
+  }
+  .fullscreen-section {
+    padding: clamp(75px, 8.5vh, 95px) 0 clamp(35px, 4.5vh, 50px) 0;
+  }
+  .story-visual-col {
+    position: sticky;
+    top: 95px;
+  }
+  .story-visual-col > div:first-child {
+    max-height: calc(100vh - 240px);
+    aspect-ratio: 16 / 10;
+  }
+  .metrics-strip-container {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+  .metric-number {
+    font-size: 26px !important;
+  }
+  .dest-article-card {
+    width: clamp(380px, 38vw, 520px) !important;
   }
 }
 
-@media (max-width: 960px) {
-  h1, .typo-h1 {
-    font-size: 38px !important;
+/* ---------------------------------------------------------------------
+   2. DESKTOP & MACBOOK (>= 1024px)
+   - Pinned horizontal scroll for destinations
+---------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .destinations-section {
+    overflow: hidden !important;
   }
-  h2, .typo-h2 {
-    font-size: 26px !important;
+  .destinations-scroll-wrapper {
+    overflow: visible;
   }
-  .hero-grid,
-  .tours-full-grid,
-  .grid-2-asymmetric,
-  .mega-grid-3,
-  .metrics-strip {
-    grid-template-columns: 1fr !important;
+}
+
+/* ---------------------------------------------------------------------
+   3. TABLET & IPAD SCREENS (768px to 1023px)
+   - iPad portrait (768x1024), iPad Air/Pro landscape
+   - 2-column balanced layouts, smooth touch swipe gallery
+---------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .desktop-menu-list {
+    display: none !important;
   }
-  .dest-span-7,
-  .dest-span-5,
-  .dest-span-6 {
-    grid-column: span 12 !important;
+  .mobile-menu-btn {
+    display: inline-flex !important;
+  }
+  .main-nav-inner {
+    min-height: 74px;
+  }
+  .brand-logo-img {
+    height: 48px;
+    max-width: 170px;
+  }
+  .header-book-btn {
+    padding: 10px 18px !important;
+    font-size: 14px !important;
   }
   .container-editorial,
   .container-fullbleed {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: clamp(20px, 3.5vw, 36px) !important;
+    padding-right: clamp(20px, 3.5vw, 36px) !important;
+  }
+  .fullscreen-section {
+    min-height: auto;
+    padding: 85px 0 55px 0;
+  }
+
+  /* BrandIntro on Tablet: stack chapters and visual cleanly */
+  .brand-intro-layout {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+  .story-visual-col {
+    position: relative !important;
+    top: 0 !important;
+    margin-top: 16px;
+  }
+  .metrics-strip-container {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 12px !important;
+    padding: 18px !important;
+  }
+
+  /* Destinations on Tablet: Smooth touch swipe track with momentum */
+  .destinations-section {
+    overflow: visible !important;
+  }
+  .destinations-scroll-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 24px;
+    margin: 0 calc(-1 * clamp(20px, 3.5vw, 36px));
+    padding-left: clamp(20px, 3.5vw, 36px);
+    padding-right: clamp(20px, 3.5vw, 36px);
+    scrollbar-width: thin;
+  }
+  .destinations-horizontal-track {
+    display: flex !important;
+    gap: 24px !important;
+    width: max-content !important;
+    padding-right: 32px !important;
+  }
+  .dest-article-card {
+    scroll-snap-align: center;
+    width: min(78vw, 440px) !important;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid rgba(150, 112, 3, 0.22);
+    border-radius: 8px;
+    padding: 22px;
+    box-shadow: 0 10px 28px rgba(68, 51, 0, 0.07);
+  }
+
+  /* FeaturedTours & Cards on Tablet: 2 columns */
+  .grid-2-fullscreen {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+  }
+  .tour-item-editorial {
+    padding: 22px !important;
+  }
+
+  /* Footer on Tablet */
+  .footer-main-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 36px !important;
+  }
+  .footer-links-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   4. MOBILE SCREENS (< 768px - iPhones, Androids, 320px to 767px)
+   - 1 column full-screen cards, touch-optimized, perfectly readable
+---------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Typography Scaling */
+  h1, .typo-h1 {
+    font-size: clamp(30px, 7.8vw, 40px) !important;
+    line-height: 1.2 !important;
+  }
+  h2, .typo-h2 {
+    font-size: clamp(24px, 6vw, 30px) !important;
+    line-height: 1.25 !important;
+  }
+  h3, .typo-h3 {
+    font-size: clamp(19px, 4.8vw, 22px) !important;
+  }
+  .typo-body {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Navigation Header */
+  .main-nav-inner {
+    min-height: 64px;
+    gap: 8px;
+  }
+  .brand-logo-img {
+    height: 38px;
+    max-width: 140px;
+  }
+  .header-actions {
+    gap: 8px !important;
+  }
+  .header-book-btn {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    border-radius: 6px !important;
+  }
+  .mobile-menu-btn {
+    padding: 8px 10px !important;
+    font-size: 13px !important;
+    border-radius: 6px !important;
+  }
+
+  /* Container & Section Padding */
+  .container-editorial,
+  .container-fullbleed {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .fullscreen-section {
+    min-height: auto;
+    padding: 68px 0 44px 0;
+  }
+
+  /* STRICT 1-COLUMN FOR ALL CONTENT GRIDS ON MOBILE */
+  .grid-2-fullscreen {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Hero adjustments */
+  .hx-wordmark {
+    font-size: clamp(44px, 13vw, 68px) !important;
+  }
+  .hx-tagline {
+    font-size: clamp(17px, 4.8vw, 22px) !important;
+    margin-top: 12px !important;
+  }
+  .hx-center {
+    top: 45% !important;
+    transform: translateY(-50%) !important;
+    padding: 0 16px !important;
+  }
+  .hx-scroll {
+    bottom: 20px !important;
+    font-size: 13px !important;
+  }
+
+  /* BrandIntro on Mobile */
+  .brand-intro-layout {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .story-chapters-col {
+    gap: 18px !important;
+    padding-right: 0 !important;
+  }
+  .story-chapter-card {
+    padding: 20px 18px !important;
+  }
+  .story-visual-col {
+    position: relative !important;
+    top: 0 !important;
+    margin-top: 20px !important;
+  }
+  .metrics-strip-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 16px !important;
+  }
+  .metric-number {
+    font-size: 26px !important;
+  }
+
+  /* Destinations Touch Swipe on Mobile */
+  .destinations-scroll-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    margin: 0 -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .destinations-horizontal-track {
+    display: flex !important;
+    gap: 16px !important;
+    width: max-content !important;
+    padding-right: 20px !important;
+  }
+  .dest-article-card {
+    scroll-snap-align: center;
+    width: 86vw !important;
+    max-width: 350px !important;
+    flex-shrink: 0;
+    padding: 18px !important;
+  }
+
+  /* FeaturedTours on Mobile */
+  .tour-item-editorial {
+    padding: 20px 16px !important;
+  }
+  .tour-item-editorial .btn-primary,
+  .tour-item-editorial .btn-outline {
+    width: 100% !important;
+    min-width: 0 !important;
+    text-align: center;
+  }
+
+  /* HotNews & Kollections Hover Cards on Mobile */
+  .hover-reveal-card {
+    min-height: 380px !important;
+    aspect-ratio: 16 / 11 !important;
+  }
+  .hover-reveal-card .card-default-caption {
+    display: none !important;
+  }
+  .hover-reveal-card .card-hover-overlay {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+    background: linear-gradient(180deg, rgba(10, 16, 20, 0.15) 0%, rgba(10, 16, 20, 0.65) 40%, rgba(10, 16, 20, 0.95) 100%) !important;
+    padding: 22px 18px !important;
+  }
+  .hover-reveal-card .card-hover-overlay p.typo-body {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 14px !important;
+    font-size: 14px !important;
+  }
+
+  /* Footer on Mobile */
+  .footer-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+  .footer-links-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Modals & Drawers on Mobile */
+  .modal-box {
+    padding: 24px 18px !important;
+    width: 95vw !important;
+    border-radius: 8px !important;
+  }
+  .side-drawer {
+    padding: 24px 18px !important;
+    max-width: 100% !important;
+  }
+  .form-input {
+    font-size: 16px !important;
   }
 }
 

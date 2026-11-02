@@ -21,8 +21,8 @@ export const Destinations: React.FC<DestinationsProps> = ({ onOpenItemModal }) =
 
     const mm = gsap.matchMedia();
 
-    // Desktop & Tablet (>= 768px): Pinned Horizontal Scroll Gallery
-    mm.add('(min-width: 768px)', () => {
+    // Desktop & Macbook (>= 1024px): Pinned Horizontal Scroll Gallery
+    mm.add('(min-width: 1024px)', () => {
       const track = trackRef.current;
       if (!track) return;
 
@@ -73,8 +73,7 @@ export const Destinations: React.FC<DestinationsProps> = ({ onOpenItemModal }) =
     <section
       ref={containerRef}
       id="destinations"
-      className="fullscreen-section section-white"
-      style={{ overflow: 'hidden', padding: '100px 0 80px 0' }}
+      className="fullscreen-section section-white destinations-section"
     >
       <div className="container-fullbleed">
         {/* Section Header */}
@@ -107,7 +106,7 @@ export const Destinations: React.FC<DestinationsProps> = ({ onOpenItemModal }) =
                 position: 'relative',
                 overflow: 'hidden'
               }}
-              className="hidden md:block"
+              className="hidden lg:block"
             >
               <div
                 ref={progressBarRef}
@@ -124,35 +123,17 @@ export const Destinations: React.FC<DestinationsProps> = ({ onOpenItemModal }) =
           </div>
         </div>
 
-        {/* Horizontal Track (pinned on desktop, scrollable on mobile) */}
-        <div
-          ref={trackRef}
-          style={{
-            display: 'flex',
-            gap: '36px',
-            width: 'max-content',
-            paddingRight: '80px',
-            willChange: 'transform'
-          }}
-          className="destinations-horizontal-track"
-        >
-          {DESTINATIONS.map((dest, i) => (
-            <article
-              key={dest.id}
-              style={{
-                width: 'clamp(340px, 42vw, 580px)',
-                flexShrink: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                backgroundColor: '#ffffff',
-                border: '1px solid rgba(150, 112, 3, 0.22)',
-                borderRadius: '8px',
-                padding: '24px',
-                boxShadow: '0 12px 32px rgba(68, 51, 0, 0.08)',
-                transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
-              }}
-              className="hover:border-gold hover:shadow-xl"
-            >
+        {/* Horizontal Track Wrapper (touch scroll on mobile/tablet, pinned on macbook/desktop) */}
+        <div className="destinations-scroll-wrapper">
+          <div
+            ref={trackRef}
+            className="destinations-horizontal-track"
+          >
+            {DESTINATIONS.map((dest, i) => (
+              <article
+                key={dest.id}
+                className="dest-article-card hover:border-gold hover:shadow-xl"
+              >
               <div
                 style={{
                   position: 'relative',
@@ -223,6 +204,7 @@ export const Destinations: React.FC<DestinationsProps> = ({ onOpenItemModal }) =
             </article>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

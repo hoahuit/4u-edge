@@ -197,13 +197,12 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Right Action CTA & Mobile Drawer Button */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+        <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <button
             type="button"
             onClick={() => onOpenBooking('Private Tour & Lifestyle Consultation')}
-            className="btn-primary"
+            className="btn-primary header-book-btn"
             style={{
-              padding: '12px 24px',
               borderRadius: '8px',
               boxShadow: isScrolled ? 'none' : '0 4px 15px rgba(0,0,0,0.3)'
             }}
@@ -214,9 +213,8 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="btn-outline mobile-menu-btn"
+            className="btn-outline mobile-menu-btn header-menu-toggle-btn"
             style={{
-              padding: '10px 16px',
               color: isScrolled ? 'var(--color-gold)' : '#fffdf9',
               borderColor: isScrolled ? 'var(--color-gold)' : '#fffdf9'
             }}

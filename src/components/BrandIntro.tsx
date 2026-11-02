@@ -125,9 +125,9 @@ export const BrandIntro: React.FC = () => {
         </div>
 
         {/* Sticky Storytelling Layout (Strict 2 Columns: Chapters on left, Sticky Visual on right) */}
-        <div className="grid-2-fullscreen" style={{ alignItems: 'flex-start', position: 'relative' }}>
+        <div className="grid-2-fullscreen brand-intro-layout" style={{ alignItems: 'flex-start', position: 'relative' }}>
           {/* Column 1 of 2: Scrolling Storytelling Chapters */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', paddingRight: 'clamp(10px, 2vw, 30px)' }}>
+          <div className="story-chapters-col">
             {CHAPTERS.map((chap, idx) => {
               const isActive = activeChapter === idx;
               return (
@@ -167,7 +167,7 @@ export const BrandIntro: React.FC = () => {
           </div>
 
           {/* Column 2 of 2: Sticky Visual Presentation with Image Crossfade */}
-          <div style={{ position: 'sticky', top: '120px', display: 'flex', flexDirection: 'column' }}>
+          <div className="story-visual-col">
             <div
               style={{
                 position: 'relative',
