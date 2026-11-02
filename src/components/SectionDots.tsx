@@ -7,7 +7,8 @@ const SECTIONS = [
   { id: 'featured-tours', label: '04. Featured Tours' },
   { id: 'hot-news', label: '05. Hot News' },
   { id: 'kollections', label: '06. Kollections 4U' },
-  { id: 'footer', label: '07. Private Concierge' },
+  { id: 'signature-experiences', label: '07. Signature Experiences' },
+  { id: 'footer', label: '08. Private Concierge' },
 ];
 
 export const SectionDots: React.FC = () => {
