@@ -55,7 +55,7 @@ export const App: React.FC = () => {
 
         {/* Section 2: Brand Intro & Philosophy (Full-screen, strict 2 items/columns) */}
         <div className="section-scroll-reveal">
-          <BrandIntro />
+          <BrandIntro onOpenBooking={handleOpenBooking} onOpenItemModal={handleOpenItemModal} />
         </div>
 
         {/* Section 3: Curated Destinations (Full-screen, strict 2 items/row) */}

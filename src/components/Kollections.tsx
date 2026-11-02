@@ -23,13 +23,13 @@ export const Kollections: React.FC<KollectionsProps> = ({
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        '.kollections-reveal-card',
-        { y: 45, opacity: 0 },
+        '.kollections-item-editorial',
+        { y: 35, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1.1,
-          stagger: 0.18,
+          duration: 0.9,
+          stagger: 0.15,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: '.kollections-grid',
@@ -62,102 +62,91 @@ export const Kollections: React.FC<KollectionsProps> = ({
               Curated Travel & Wellness Editions
             </h2>
           </div>
-
         </div>
 
-        {/* STRICT 2 ITEMS PER ROW (FULL-SCREEN WIDTH) WITH HOVER REVEAL */}
+        {/* STRICT 2 ITEMS PER ROW (FULL-SCREEN WIDTH) MATCHING FEATURED TOURS STYLE */}
         <div className="grid-2-fullscreen kollections-grid">
           {KOLLECTIONS_ITEMS.slice(0, 4).map((item: KollectionItem) => (
-            <div
+            <article
               key={item.id}
-              className="hover-reveal-card kollections-reveal-card"
-              onClick={() => onOpenItemModal({
-                title: item.title,
-                category: `Kollections 4U · ${item.category}`,
-                description: item.description,
-                price: item.price
-              })}
+              className="tour-item-editorial kollections-item-editorial"
+              style={{
+                backgroundColor: 'transparent',
+                border: 'none',
+                borderRadius: '0px',
+                padding: '0',
+                display: 'flex',
+                flexDirection: 'column',
+                boxShadow: 'none'
+              }}
             >
-              {/* Big Full Bleed Image */}
-              <img
-                src={item.image}
-                alt={item.title}
-                className="card-bg-img"
-              />
+              {/* Cinematic Scale Frame */}
+              <div
+                className="tour-clip-frame"
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  aspectRatio: '16 / 10',
+                  overflow: 'hidden',
+                  borderRadius: '8px',
+                  backgroundColor: '#16181b',
+                  marginBottom: '22px'
+                }}
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="tour-inner-img"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block'
+                  }}
+                />
+                <span className="tour-badge">{item.badge || item.category}</span>
+                <span className="tour-price-tag">{item.price}</span>
+              </div>
 
-              {/* Top Badge */}
-              <span className="card-top-tag">
-                {item.category} {item.badge ? `· ${item.badge}` : ''}
-              </span>
-
-              {/* Default Bottom Caption (fades out on hover) */}
-              <div className="card-default-caption">
-                <span style={{ fontSize: '18px', color: '#ffd700', fontWeight: 600, display: 'block', marginBottom: '6px' }}>
-                  {item.price}
+              {/* Text Info */}
+              <div style={{ marginBottom: '12px' }}>
+                <span style={{ color: '#5b0e5d', fontSize: '14px', fontWeight: 600, display: 'block' }}>
+                  {item.category}
                 </span>
-                <h3 className={`typo-h3 ${item.isTemp ? 'temp-spec-item' : ''}`} style={{ color: '#ffffff', margin: 0, fontSize: '24px', fontWeight: 600, textShadow: '0 2px 12px rgba(0,0,0,0.85)' }}>
+                <h3 className="typo-h3" style={{ color: '#967003', margin: '4px 0 0 0', fontSize: '24px' }}>
                   {item.title}
                 </h3>
               </div>
 
-              {/* Hover Reveal Overlay (reveals full details + Xem Chi Tiết and Acquire buttons on hover) */}
-              <div className="card-hover-overlay">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '14px', color: '#ffd700', fontWeight: 600 }}>
-                    {item.category}
-                  </span>
-                  <span style={{ fontSize: '20px', fontWeight: 700, color: '#ffd700' }}>
-                    {item.price}
-                  </span>
-                </div>
+              <p className="typo-body" style={{ color: '#4a473f', marginBottom: '18px', flexGrow: 1, fontSize: '16px', lineHeight: 1.6 }}>
+                {item.description}
+              </p>
 
-                <h3 className="typo-h3" style={{ color: '#ffffff', margin: '0 0 12px 0', fontSize: '24px', fontWeight: 600, lineHeight: 1.25 }}>
-                  {item.title}
-                </h3>
-
-                <p className="typo-body" style={{ color: 'rgba(255, 253, 249, 0.92)', fontSize: '16px', lineHeight: 1.6, margin: '0 0 22px 0' }}>
-                  {item.description}
-                </p>
-
-                <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onOpenItemModal({
-                        title: item.title,
-                        category: `Kollections 4U · ${item.category}`,
-                        description: item.description,
-                        price: item.price
-                      });
-                    }}
-                    className="btn-primary"
-                    style={{ flex: 1, padding: '12px 20px', fontSize: '15px', borderRadius: '8px' }}
-                  >
-                    Xem chi tiết →
-                  </button>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onOpenBooking(`Kollection Order: ${item.title}`);
-                    }}
-                    className="btn-outline"
-                    style={{
-                      flex: 1,
-                      padding: '12px 20px',
-                      fontSize: '15px',
-                      borderRadius: '8px',
-                      color: '#ffffff',
-                      borderColor: 'rgba(255, 253, 249, 0.6)',
-                      backgroundColor: 'rgba(255, 253, 249, 0.1)'
-                    }}
-                  >
-                    Acquire Item
-                  </button>
-                </div>
+              {/* Action Buttons */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center' }}>
+                <button
+                  type="button"
+                  onClick={() => onOpenItemModal({
+                    title: item.title,
+                    category: `Kollections 4U · ${item.category}`,
+                    description: item.description,
+                    price: item.price
+                  })}
+                  className="btn-primary"
+                  style={{ flex: 1, minWidth: '140px', padding: '12px 20px', fontSize: '15px', borderRadius: '8px' }}
+                >
+                  Xem chi tiết →
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onOpenBooking(`Kollection Order: ${item.title}`)}
+                  className="btn-outline"
+                  style={{ flex: 1, minWidth: '140px', padding: '12px 18px', fontSize: '15px', borderRadius: '8px' }}
+                >
+                  Acquire Item
+                </button>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

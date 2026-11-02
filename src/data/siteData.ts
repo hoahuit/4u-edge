@@ -442,30 +442,6 @@ export const DESTINATIONS: Destination[] = [
 
 export const FEATURED_TOURS: TourItem[] = [
   {
-    id: 'tour-1',
-    title: 'Lake Como, Dolomites & Private Thermal Sanctuary',
-    subtitle: 'Signature Italian Alpine Sabbatical',
-    destination: 'Lombardy & South Tyrol, Italy',
-    duration: '9 Days / 8 Nights',
-    price: '$6,850',
-    badge: 'Best Seller',
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=85',
-    inclusions: ['Private Villa Stay', 'Helicopter Transfers', 'Thermal Longevity Treatments', 'Michelin Chef Dinners'],
-    overview: 'An extraordinary journey linking the quiet elegance of Lake Como cliffside villas with restorative high-altitude hot springs in the Italian Dolomites.'
-  },
-  {
-    id: 'tour-2',
-    title: 'Kyoto Zen Temples & Hakone Thermal Ryokan Odyssey',
-    subtitle: 'Mindfulness & Natural Longevity Retreat',
-    destination: 'Kyoto & Hakone, Japan',
-    duration: '8 Days / 7 Nights',
-    price: '$7,200',
-    badge: 'Just Released',
-    image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1600&q=85',
-    inclusions: ['Centuries-old Onsen Ryokan', 'Zen Master Meditation', 'Ayurvedic Pulse Assessment', 'Tea Ceremony Access'],
-    overview: 'Deep contemplative stillness in private bamboo sanctuaries followed by curative volcanic mineral soaks overlooking Mount Fuji.'
-  },
-  {
     id: 'tour-3',
     title: 'Vietnam Coastal Healing Villas & Executive Trade Hub',
     subtitle: 'Wellness Retreat & C-Suite Factory Delegation',

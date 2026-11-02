@@ -1,54 +1,105 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ModalData } from '../types';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CHAPTERS = [
+interface EditorialStep {
+  step: string;
+  number: string;
+  title: string;
+  description: string;
+  ctaText: string;
+  image: string;
+  alt: string;
+  tag: string;
+  consultationTopic: string;
+}
+
+const EDITORIAL_STEPS: EditorialStep[] = [
   {
-    pillar: '01 · Better',
-    title: 'SMART Mentoring, Tourism & Ownership',
-    description: 'Transforming how high-net-worth families and enterprise leaders travel. We design private sabbatical itineraries that combine alpine relaxation with private mastermind mentorship sessions, wealth asset protection seminars, and SMART ownership structuring.',
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1400&q=85',
-    caption: 'Sanctuary Architecture & Alpine Restoration'
+    step: 'STEP 01',
+    number: '01',
+    title: 'Begin the Journey',
+    description: "We begin with a personal touch—ideally in person, or via video/phone call. This allows us to truly understand your vision, preferences, and travel style. It's the quickest way to turn your ideas into an extraordinary journey designed just for you.",
+    ctaText: 'GET STARTED',
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=85',
+    alt: 'Luxury hospitality sanctuary architecture surrounded by lush natural greenery',
+    tag: 'Initial Consultation · Vision Alignment',
+    consultationTopic: 'Step 01 — Begin the Journey Consultation'
   },
   {
-    pillar: '02 · Healthier',
-    title: 'Natural Healing Yoga & Romance Sabbaticals',
-    description: 'Certified therapeutic yoga masters, Ayurvedic nutritionists, and thermal spring balneotherapy in Kyoto, Hakone, and Amalfi. Designed for emotional grounding, cellular longevity, and rekindling intimacy in private cliffside villas.',
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1400&q=85',
-    caption: 'Therapeutic Healing & Intimate Sanctuaries'
+    step: 'STEP 02',
+    number: '02',
+    title: 'Bespoke Planning',
+    description: "Once we've gathered everything we need, we'll carefully curate an itinerary tailored to your desires. We'll walk you through every detail—again, ideally face-to-face or over video—so you understand the thought and intention behind each hotel, experience, and destination we recommend.",
+    ctaText: 'EXPLORE OUR APPROACH',
+    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=85',
+    alt: 'Panoramic luxury hotel suite overlooking tranquil destination views',
+    tag: 'Curated Itineraries · Precision Architecture',
+    consultationTopic: 'Step 02 — Bespoke Planning Inquiry'
   },
   {
-    pillar: '03 · Richer',
-    title: 'Exclusive Networking & Global Business Delegations',
-    description: 'Direct high-level access to Swiss precision watch ateliers, Milanese fashion houses, Japanese robotics hubs, and prime Vietnamese real estate concessions. Where peer-to-peer relationships ignite multi-generational growth.',
-    image: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1400&q=85',
-    caption: 'Private Executive Masterminds & Factory Delegations'
+    step: 'STEP 03',
+    number: '03',
+    title: 'Exceptional Experiences',
+    description: "Every element of your journey is thoughtfully arranged to deliver exceptional experiences. From private wellness retreats to exclusive cultural encounters, every detail is designed around your preferences.",
+    ctaText: 'DISCOVER EXPERIENCES',
+    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1600&q=85',
+    alt: 'Private wellness sanctuary infinity pool immersed in nature',
+    tag: 'Private Sanctuaries · Natural Healing',
+    consultationTopic: 'Step 03 — Exceptional Experiences Discovery'
+  },
+  {
+    step: 'STEP 04',
+    number: '04',
+    title: 'Your Journey Begins',
+    description: "From the first moment to your return home, our concierge team provides thoughtful support throughout your journey. Travel with confidence, knowing every detail has been carefully considered.",
+    ctaText: 'PLAN YOUR JOURNEY',
+    image: 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1600&q=85',
+    alt: 'Cinematic coastal villa overlooking dramatic azure seas',
+    tag: 'Sovereign Concierge · 24/7 Diplomatic Support',
+    consultationTopic: 'Step 04 — Plan Your Journey'
   }
 ];
 
-export const BrandIntro: React.FC = () => {
-  const [activeChapter, setActiveChapter] = useState(0);
+interface BrandIntroProps {
+  onOpenBooking?: (purpose: string) => void;
+  onOpenItemModal?: (data: ModalData) => void;
+}
+
+export const BrandIntro: React.FC<BrandIntroProps> = ({ onOpenBooking, onOpenItemModal }) => {
   const [counts, setCounts] = useState({ retreats: 0, renewal: 0, destinations: 0 });
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
+
+  const handleCtaClick = (step: EditorialStep) => {
+    if (onOpenBooking) {
+      onOpenBooking(step.consultationTopic);
+    } else if (onOpenItemModal) {
+      onOpenItemModal({
+        title: `${step.step} — ${step.title}`,
+        category: 'Editorial Journey Step',
+        description: step.description
+      });
+    }
+  };
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion || !sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // 1. Editorial Headline line-by-line reveal with subtle blur
+      // 1. Header Reveal
       if (headlineRef.current) {
         gsap.fromTo(
           headlineRef.current,
-          { opacity: 0, y: 40, filter: 'blur(8px)' },
+          { opacity: 0, y: 35 },
           {
             opacity: 1,
             y: 0,
-            filter: 'blur(0px)',
-            duration: 1.2,
+            duration: 1.1,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: headlineRef.current,
@@ -59,7 +110,77 @@ export const BrandIntro: React.FC = () => {
         );
       }
 
-      // 2. Animated Metrics Counter on enter
+      // 2. Animate each Editorial Step with Reveal & Parallax
+      const stepItems = document.querySelectorAll('.editorial-step-item');
+      stepItems.forEach((item, index) => {
+        const isReversed = index % 2 === 1;
+        const imgWrap = item.querySelector('.editorial-step-frame-wrap');
+        const img = item.querySelector('.editorial-step-img');
+        const content = item.querySelector('.editorial-step-content-col');
+
+        if (imgWrap && img) {
+          // Clip-path reveal alternating direction
+          gsap.fromTo(
+            imgWrap,
+            {
+              clipPath: isReversed
+                ? 'inset(0% 0% 0% 100%)'
+                : 'inset(0% 100% 0% 0%)',
+              opacity: 0.2
+            },
+            {
+              clipPath: 'inset(0% 0% 0% 0%)',
+              opacity: 1,
+              duration: 1.25,
+              ease: 'power3.inOut',
+              scrollTrigger: {
+                trigger: item,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+              }
+            }
+          );
+
+          // Subtle parallax on image
+          gsap.fromTo(
+            img,
+            { scale: 1.08, yPercent: -4 },
+            {
+              scale: 1.0,
+              yPercent: 4,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: item,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1.2
+              }
+            }
+          );
+        }
+
+        // Staggered text content reveal
+        if (content) {
+          gsap.fromTo(
+            content.children,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.9,
+              stagger: 0.14,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: item,
+                start: 'top 75%',
+                toggleActions: 'play none none reverse'
+              }
+            }
+          );
+        }
+      });
+
+      // 3. Animated Metrics Counter on enter
       ScrollTrigger.create({
         trigger: '.metrics-strip-container',
         start: 'top 85%',
@@ -87,18 +208,6 @@ export const BrandIntro: React.FC = () => {
           }, intervalTime);
         }
       });
-
-      // 3. Chapter scroll observer to trigger active image crossfade
-      const chapterEls = document.querySelectorAll('.story-chapter-card');
-      chapterEls.forEach((el, index) => {
-        ScrollTrigger.create({
-          trigger: el,
-          start: 'top 55%',
-          end: 'bottom 55%',
-          onEnter: () => setActiveChapter(index),
-          onEnterBack: () => setActiveChapter(index)
-        });
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -107,156 +216,182 @@ export const BrandIntro: React.FC = () => {
   return (
     <section ref={sectionRef} id="brand-intro" className="fullscreen-section section-white">
       <div className="container-fullbleed">
-        {/* Section Header with Editorial Text Reveal */}
-        <div style={{ marginBottom: '40px' }}>
-          <span style={{ color: '#5b0e5d', fontWeight: 600, fontSize: '16px', display: 'block', marginBottom: '10px' }}>
+        
+        {/* =====================================================================
+            SECTION HEADER: Philosophy & Architecture
+        ====================================================================== */}
+        <div style={{ marginBottom: '60px' }}>
+          <span
+            style={{
+              color: '#5b0e5d',
+              fontWeight: 600,
+              fontSize: '15px',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              display: 'block',
+              marginBottom: '10px'
+            }}
+          >
             Welcome to www.4ueup.com · Philosophy & Architecture
           </span>
           <h2
             ref={headlineRef}
             className="typo-h2"
-            style={{ color: '#967003', fontSize: 'clamp(28px, 3.4vw, 44px)', margin: '0 0 16px 0', maxWidth: '1000px' }}
+            style={{
+              color: '#967003',
+              fontSize: 'clamp(28px, 3.4vw, 44px)',
+              margin: '0 0 16px 0',
+              maxWidth: '1000px',
+              lineHeight: 1.2
+            }}
           >
             Where Luxury Travel Meets Natural Healing & Strategic Growth
           </h2>
-          <p className="typo-body" style={{ color: '#4a473f', fontSize: '19px', lineHeight: 1.6, maxWidth: '880px', margin: 0 }}>
+          <p
+            className="typo-body"
+            style={{
+              color: '#4a473f',
+              fontSize: '18px',
+              lineHeight: 1.65,
+              maxWidth: '860px',
+              margin: 0
+            }}
+          >
             At <strong>4U Edge Up</strong>, an extraordinary journey does more than change your scenery — it elevates how you live, heal, and lead.
           </p>
         </div>
 
-        {/* Sticky Storytelling Layout (Strict 2 Columns: Chapters on left, Sticky Visual on right) */}
-        <div className="grid-2-fullscreen brand-intro-layout" style={{ alignItems: 'flex-start', position: 'relative' }}>
-          {/* Column 1 of 2: Scrolling Storytelling Chapters */}
-          <div className="story-chapters-col">
-            {CHAPTERS.map((chap, idx) => {
-              const isActive = activeChapter === idx;
-              return (
-                <article
-                  key={idx}
-                  className="story-chapter-card"
-                  onClick={() => setActiveChapter(idx)}
-                  style={{
-                    padding: '32px',
-                    borderRadius: '8px',
-                    backgroundColor: isActive ? 'var(--bg-cream)' : '#ffffff',
-                    border: `1.5px solid ${isActive ? 'var(--color-gold)' : 'rgba(150, 112, 3, 0.16)'}`,
-                    boxShadow: isActive ? '0 12px 30px rgba(150, 112, 3, 0.12)' : 'none',
-                    transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                    <span style={{ color: '#5b0e5d', fontWeight: 700, fontSize: '16px' }}>
-                      {chap.pillar}
-                    </span>
-                    <span style={{ fontSize: '13px', color: isActive ? '#967003' : '#666156', fontWeight: 600 }}>
-                      Chapter {idx + 1} of 3
-                    </span>
-                  </div>
+        {/* =====================================================================
+            VERTICAL STORYTELLING: 4 ALTERNATING EDITORIAL STEPS
+        ====================================================================== */}
+        <div className="editorial-steps-container">
+          {EDITORIAL_STEPS.map((item, index) => {
+            const isReversed = index % 2 === 1;
 
-                  <h3 className="typo-h3" style={{ color: '#967003', fontSize: '24px', margin: '0 0 14px 0' }}>
-                    {chap.title}
-                  </h3>
-
-                  <p className="typo-body" style={{ color: '#4a473f', fontSize: '17px', lineHeight: 1.65, margin: 0 }}>
-                    {chap.description}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-
-          {/* Column 2 of 2: Sticky Visual Presentation with Image Crossfade */}
-          <div className="story-visual-col">
-            <div
-              style={{
-                position: 'relative',
-                width: '100%',
-                aspectRatio: '16/11',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                backgroundColor: '#1a1814',
-                boxShadow: '0 16px 40px rgba(0, 0, 0, 0.18)',
-                marginBottom: '24px'
-              }}
-            >
-              {CHAPTERS.map((chap, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    opacity: activeChapter === idx ? 1 : 0,
-                    transform: activeChapter === idx ? 'scale(1)' : 'scale(1.08)',
-                    transition: 'opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1)',
-                    pointerEvents: activeChapter === idx ? 'auto' : 'none'
-                  }}
-                >
-                  <img
-                    src={chap.image}
-                    alt={chap.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(180deg, rgba(14,20,24,0) 50%, rgba(14,20,24,0.85) 100%)'
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      bottom: '20px',
-                      left: '24px',
-                      right: '24px',
-                      color: '#ffffff'
-                    }}
-                  >
-                    <span style={{ fontSize: '12px', color: '#ffd700', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                      {chap.pillar}
+            return (
+              <div
+                key={item.number}
+                className={`editorial-step-item ${isReversed ? 'is-reversed' : 'is-normal'}`}
+              >
+                {/* 1. Large Photography Column (~53% width) */}
+                <div className="editorial-step-media-col">
+                  <div className="editorial-step-frame-wrap">
+                    <img
+                      src={item.image}
+                      alt={item.alt}
+                      className="editorial-step-img"
+                      loading="lazy"
+                    />
+                    <span className="editorial-step-badge">
+                      {item.tag}
                     </span>
-                    <p style={{ margin: '4px 0 0 0', fontSize: '16px', fontWeight: 500, color: '#fffdf9' }}>
-                      {chap.caption}
-                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
 
-            {/* Metrics Strip */}
-            <div
-              className="metrics-strip-container"
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                gap: '14px',
-                padding: '20px',
-                backgroundColor: 'var(--bg-cream)',
-                borderRadius: '8px',
-                border: '1px solid rgba(150, 112, 3, 0.22)',
-                boxShadow: '0 4px 20px rgba(68, 51, 0, 0.06)'
-              }}
-            >
-              <div>
-                <span className="metric-number" style={{ fontSize: '30px' }}>{counts.retreats}+</span>
-                <span style={{ fontSize: '13px', color: '#5b0e5d', fontWeight: 600, display: 'block' }}>Bespoke Retreats</span>
+                {/* 2. Text Storytelling Column (~47% width) */}
+                <div className="editorial-step-content-col">
+                  {/* Step Indicator */}
+                  <span
+                    style={{
+                      display: 'block',
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      letterSpacing: '0.22em',
+                      textTransform: 'uppercase',
+                      color: '#5b0e5d',
+                      marginBottom: '10px'
+                    }}
+                  >
+                    {item.step}
+                  </span>
+
+                  {/* Elegant Serif Heading */}
+                  <h3
+                    className="typo-h2"
+                    style={{
+                      color: '#967003',
+                      fontSize: 'clamp(30px, 3.2vw, 46px)',
+                      lineHeight: 1.18,
+                      margin: '0 0 18px 0'
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+
+                  {/* Description Body */}
+                  <p
+                    className="typo-body"
+                    style={{
+                      color: '#4a473f',
+                      fontSize: '17px',
+                      lineHeight: 1.75,
+                      marginBottom: '26px'
+                    }}
+                  >
+                    {item.description}
+                  </p>
+
+                  {/* Editorial CTA */}
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => handleCtaClick(item)}
+                      className="editorial-step-cta"
+                    >
+                      <span>{item.ctaText}</span>
+                      <span className="cta-arrow">→</span>
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div>
-                <span className="metric-number" style={{ fontSize: '30px' }}>{counts.renewal}%</span>
-                <span style={{ fontSize: '13px', color: '#5b0e5d', fontWeight: 600, display: 'block' }}>Patron Renewal</span>
-              </div>
-              <div>
-                <span className="metric-number" style={{ fontSize: '30px' }}>{counts.destinations}</span>
-                <span style={{ fontSize: '13px', color: '#5b0e5d', fontWeight: 600, display: 'block' }}>Global Dest.</span>
-              </div>
-              <div>
-                <span className="metric-number" style={{ fontSize: '30px' }}>24/7</span>
-                <span style={{ fontSize: '13px', color: '#5b0e5d', fontWeight: 600, display: 'block' }}>Concierge Desk</span>
-              </div>
+            );
+          })}
+        </div>
+
+        {/* =====================================================================
+            METRICS STRIP: Track Record & Global Footprint
+        ====================================================================== */}
+        <div style={{ marginTop: '70px' }}>
+          <div
+            className="metrics-strip-container"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '16px',
+              padding: '24px 28px',
+              backgroundColor: 'var(--bg-cream)',
+              borderRadius: '8px',
+              border: '1px solid rgba(150, 112, 3, 0.22)',
+              boxShadow: '0 6px 24px rgba(68, 51, 0, 0.06)'
+            }}
+          >
+            <div>
+              <span className="metric-number" style={{ fontSize: '32px' }}>{counts.retreats}+</span>
+              <span style={{ fontSize: '14px', color: '#5b0e5d', fontWeight: 600, display: 'block', marginTop: '2px' }}>
+                Bespoke Retreats
+              </span>
+            </div>
+            <div>
+              <span className="metric-number" style={{ fontSize: '32px' }}>{counts.renewal}%</span>
+              <span style={{ fontSize: '14px', color: '#5b0e5d', fontWeight: 600, display: 'block', marginTop: '2px' }}>
+                Patron Renewal
+              </span>
+            </div>
+            <div>
+              <span className="metric-number" style={{ fontSize: '32px' }}>{counts.destinations}</span>
+              <span style={{ fontSize: '14px', color: '#5b0e5d', fontWeight: 600, display: 'block', marginTop: '2px' }}>
+                Global Dest.
+              </span>
+            </div>
+            <div>
+              <span className="metric-number" style={{ fontSize: '32px' }}>24/7</span>
+              <span style={{ fontSize: '14px', color: '#5b0e5d', fontWeight: 600, display: 'block', marginTop: '2px' }}>
+                Concierge Desk
+              </span>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
