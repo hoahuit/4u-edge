@@ -2036,15 +2036,288 @@ body {
 }
 
 @media (max-width: 991px) {
+
   .editorial-step-item.is-normal,
   .editorial-step-item.is-reversed {
     flex-direction: column !important;
     gap: 32px !important;
   }
+
   .editorial-step-media-col,
   .editorial-step-content-col {
     flex: 0 0 100% !important;
     width: 100% !important;
     padding: 0 !important;
+  }
+}
+
+
+/* =====================================================================
+   4U SIGNATURE EXPERIENCES: INTERLOCKING STACKED EDITORIAL SPREAD
+====================================================================== */
+.sig-experiences-section {
+  position: relative;
+  background-color: #faf8f5;
+  padding: 80px 0 100px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(150, 112, 3, 0.15);
+}
+
+.sig-interlocking-stack {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid rgba(150, 112, 3, 0.18);
+  box-shadow: 0 24px 60px rgba(68, 51, 0, 0.08);
+  background-color: #ffffff;
+}
+
+.sig-editorial-row {
+  display: flex;
+  width: 100%;
+  min-height: 540px;
+  position: relative;
+  border-bottom: 1px solid rgba(150, 112, 3, 0.14);
+}
+
+.sig-editorial-row:last-child {
+  border-bottom: none;
+}
+
+.sig-editorial-row.is-normal {
+  flex-direction: row;
+}
+
+.sig-editorial-row.is-reversed {
+  flex-direction: row-reverse;
+}
+
+.sig-editorial-text-col {
+  flex: 0 0 60%;
+  width: 60%;
+  padding: clamp(40px, 4.5vw, 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fdfcfa;
+  position: relative;
+  z-index: 2;
+}
+
+.sig-editorial-img-col {
+  flex: 0 0 40%;
+  width: 40%;
+  position: relative;
+  overflow: hidden;
+  background-color: #1a1814;
+}
+
+.sig-editorial-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sig-editorial-img-col:hover .sig-editorial-img {
+  transform: scale(1.04);
+}
+
+/* Artistic Typography & Credibility styling */
+.sig-artistic-num {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: clamp(48px, 4.8vw, 70px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 0.9;
+  color: rgba(150, 112, 3, 0.28);
+  user-select: none;
+  letter-spacing: -0.02em;
+}
+
+.sig-editorial-heading {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(30px, 3.2vw, 44px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #1f1d19;
+  margin: 0 0 16px 0;
+}
+
+.sig-editorial-heading em,
+.sig-editorial-heading i {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  color: #967003;
+}
+
+.sig-editorial-lead {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(16px, 1.12vw, 18px);
+  line-height: 1.85;
+  color: #4a473f;
+  margin: 0 0 22px 0;
+  max-width: 640px;
+}
+
+.sig-trust-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 18px;
+}
+
+.sig-trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5b0e5d;
+  background: rgba(91, 14, 93, 0.05);
+  border: 1px solid rgba(91, 14, 93, 0.16);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+}
+
+.sig-trust-pill:hover {
+  background: rgba(91, 14, 93, 0.1);
+  border-color: rgba(91, 14, 93, 0.35);
+}
+
+.sig-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #5b0e5d;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+
+.sig-cta-link:hover {
+  color: #967003;
+  transform: translateX(4px);
+}
+
+/* Floating dark navigation pill directly from reference photo */
+.sig-floating-pill {
+  position: absolute;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #38322e;
+  color: #ffffff;
+  padding: 12px 24px;
+  z-index: 10;
+  user-select: none;
+}
+
+.sig-floating-pill.pos-right {
+  right: 0;
+}
+
+.sig-floating-pill.pos-left {
+  left: 0;
+}
+
+.sig-floating-pill-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 2px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.sig-floating-pill-btn:hover {
+  color: #ffd700;
+  transform: scale(1.15);
+}
+
+.sig-floating-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sig-floating-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.35);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sig-floating-dot.active {
+  background-color: #ffd700;
+  transform: scale(1.35);
+}
+
+.sig-arrow-nav-btn {
+  background: none;
+  border: none;
+  color: #967003;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.sig-arrow-nav-btn:hover {
+  color: #5b0e5d;
+  transform: translateY(2px);
+}
+
+@media (max-width: 991px) {
+
+  .sig-editorial-row.is-normal,
+  .sig-editorial-row.is-reversed {
+    flex-direction: column !important;
+  }
+
+  .sig-editorial-text-col,
+  .sig-editorial-img-col {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+  }
+
+  .sig-editorial-img-col {
+    min-height: 280px;
+    max-height: 360px;
+  }
+
+  .sig-editorial-text-col {
+    padding: 36px 24px !important;
+  }
+
+  .sig-floating-pill {
+    position: relative !important;
+    width: 100%;
+    justify-content: center;
   }
 }

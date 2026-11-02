@@ -7,6 +7,7 @@ import { Destinations } from './components/Destinations';
 import { FeaturedTours } from './components/FeaturedTours';
 import { HotNews } from './components/HotNews';
 import { Kollections } from './components/Kollections';
+import { SignatureExperiences } from './components/SignatureExperiences';
 import { Footer } from './components/Footer';
 import { BookingDrawer } from './components/BookingDrawer';
 import { ItemModal } from './components/ItemModal';
@@ -83,6 +84,14 @@ export const App: React.FC = () => {
           <Kollections
             onOpenItemModal={handleOpenItemModal}
             onOpenBooking={handleOpenBooking}
+          />
+        </div>
+
+        {/* Section 7: 4U Signature Experiences Editorial Slider */}
+        <div className="section-scroll-reveal">
+          <SignatureExperiences
+            onOpenBooking={handleOpenBooking}
+            onOpenItemModal={handleOpenItemModal}
           />
         </div>
       </main>
