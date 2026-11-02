@@ -133,7 +133,7 @@ export const Header: React.FC<HeaderProps> = ({
                                     category: sub.category,
                                     description: sub.description
                                   })}
-                                  className={`mega-sublink ${sub.isTemp ? 'temp-spec-item' : ''}`}
+                                  className="mega-sublink"
                                   style={{ width: '100%' }}
                                 >
                                   <span>{sub.title}</span>
@@ -213,7 +213,7 @@ export const Header: React.FC<HeaderProps> = ({
                             description: sub.description
                           });
                         }}
-                        className={`mega-sublink ${sub.isTemp ? 'temp-spec-item' : ''}`}
+                        className="mega-sublink"
                         style={{ display: 'block', width: '100%', padding: '6px 0', fontSize: '16px' }}
                       >
                         {sub.title} →
