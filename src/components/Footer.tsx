@@ -15,14 +15,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenItemModal }
       <div className="container-fullbleed" style={{ padding: '80px clamp(24px, 4vw, 64px) 40px clamp(24px, 4vw, 64px)' }}>
         {/* STRICT 2 COLUMNS (50% / 50%) */}
         <div className="grid-2-fullscreen footer-main-grid" style={{ marginBottom: '48px', paddingBottom: '48px', borderBottom: '1px solid rgba(255, 253, 249, 0.18)' }}>
-          {/* Column 1 of 2: Brand Story & Official Credentials */}
+          {/* Column 1 of 2: Official Company Information & Contact Credentials */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px' }}>
                 <img
                   src="/logo-official.png"
                   alt="4U Edge Up Logo"
-                  style={{ height: '60px', width: 'auto', maxWidth: '210px', objectFit: 'contain' }}
+                  style={{ height: '62px', width: 'auto', maxWidth: '220px', objectFit: 'contain' }}
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                     const fallback = e.currentTarget.nextElementSibling as HTMLElement;
@@ -43,101 +43,118 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenItemModal }
                 </div>
               </div>
 
-              <p style={{ fontSize: '17px', color: 'rgba(255,253,249,0.88)', lineHeight: 1.6, maxWidth: '580px', marginBottom: '20px' }}>
-                Bespoke travel architecture, certified yoga and natural healing consultancy, executive mentoring, and global business delegations across Switzerland, Italy, Japan, and Vietnam.
-              </p>
+              {/* Company Legal Name */}
+              <h3
+                style={{
+                  fontSize: 'clamp(18px, 1.8vw, 22px)',
+                  fontWeight: 600,
+                  color: '#ffd700',
+                  margin: '0 0 16px 0',
+                  lineHeight: 1.35
+                }}
+              >
+                Công ty Cổ phần Thương mại Du lịch Bốn Tối Ưu
+              </h3>
 
-              <div style={{ fontSize: '15px', color: '#e6c56c', marginBottom: '24px' }}>
-                <strong>Official Portal:</strong> www.4ueup.com
-              </div>
+              {/* Company Details List */}
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px', margin: '0 0 24px 0', padding: 0, listStyle: 'none' }}>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '16px', color: 'rgba(255,253,249,0.92)' }}>
+                  <span style={{ color: '#ffd700', fontWeight: 600, minWidth: '95px' }}>Mã số thuế:</span>
+                  <span>030 807 8390</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '16px', color: 'rgba(255,253,249,0.92)' }}>
+                  <span style={{ color: '#ffd700', fontWeight: 600, minWidth: '95px' }}>Địa chỉ:</span>
+                  <span>07 Đặng Dung, P. Tân Định, Tp. HCM</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '16px', color: 'rgba(255,253,249,0.92)' }}>
+                  <span style={{ color: '#ffd700', fontWeight: 600, minWidth: '95px' }}>Điện thoại:</span>
+                  <a
+                    href="tel:0848180826"
+                    style={{ color: '#fffdf9', textDecoration: 'none', transition: 'color 0.2s' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffd700')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#fffdf9')}
+                  >
+                    084 818 0826
+                  </a>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '16px', color: 'rgba(255,253,249,0.92)' }}>
+                  <span style={{ color: '#ffd700', fontWeight: 600, minWidth: '95px' }}>Email:</span>
+                  <a
+                    href="mailto:customercare@4uretreats.com.vn"
+                    style={{ color: '#fffdf9', textDecoration: 'none', transition: 'color 0.2s' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffd700')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#fffdf9')}
+                  >
+                    customercare@4uretreats.com.vn
+                  </a>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '16px', color: 'rgba(255,253,249,0.92)' }}>
+                  <span style={{ color: '#ffd700', fontWeight: 600, minWidth: '95px' }}>Website:</span>
+                  <a
+                    href="https://www.4ueup.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: '#e6c56c', textDecoration: 'none' }}
+                  >
+                    www.4ueup.com
+                  </a>
+                </li>
+              </ul>
             </div>
 
             <div>
-              <span style={{ fontSize: '14px', color: 'rgba(255,253,249,0.7)' }}>
+              <span style={{ fontSize: '14px', color: 'rgba(255,253,249,0.7)', display: 'block', marginTop: '12px' }}>
                 Private Concierge Desk · Switzerland · Japan · Italy · Vietnam
               </span>
             </div>
           </div>
 
-          {/* Column 2 of 2: Quick Links & Pillar Navigation */}
-          <div className="footer-links-grid" style={{ display: 'grid', gap: '32px' }}>
+          {/* Column 2 of 2: Hot News & Kollections (Removed Uniquely 4U & Services per request) */}
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
-              <h3 className="typo-h3" style={{ color: '#fffdf9', marginBottom: '16px', fontSize: '18px' }}>
-                Uniquely 4U & Services
+              <h3 className="typo-h3" style={{ color: '#fffdf9', marginBottom: '18px', fontSize: '20px' }}>
+                Hot News & Kollections 4U
               </h3>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <p style={{ fontSize: '16px', color: 'rgba(255,253,249,0.85)', lineHeight: 1.6, marginBottom: '20px', maxWidth: '480px' }}>
+                Khám phá bản tin phong cách sống thượng lưu, nghiên cứu khoa học phục hồi tự nhiên và bộ sưu tập độc quyền của 4U Edge Up.
+              </p>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', margin: '0 0 28px 0', padding: 0, listStyle: 'none' }}>
                 <li>
-                  <button
-                    type="button"
-                    onClick={() => onOpenItemModal({
-                      title: 'Mentoring Program',
-                      category: 'Uniquely 4U · Better',
-                      description: 'Executive 1-on-1 mentoring journeys crafted for founders, next-gen leaders, and hospitality pioneers seeking clarity and elevated mindset.'
-                    })}
-                    className="footer-link"
-                    style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}
-                  >
-                    Mentoring Program
-                  </button>
+                  <a href="#featured-tours" className="footer-link">Signature Tours & Bespoke Journeys →</a>
                 </li>
                 <li>
-                  <button
-                    type="button"
-                    onClick={() => onOpenItemModal({
-                      title: 'Yoga Health Consultancy for Natural Healing',
-                      category: 'Uniquely 4U · Healthier',
-                      description: 'Bespoke holistic diagnostics, therapeutic breathwork, and restorative yoga sanctuaries in serene natural landscapes.'
-                    })}
-                    className="footer-link"
-                    style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}
-                  >
-                    Yoga & Natural Healing
-                  </button>
+                  <a href="#destinations" className="footer-link">Curated Destinations Across the Globe →</a>
                 </li>
                 <li>
-                  <button
-                    type="button"
-                    onClick={() => onOpenItemModal({
-                      title: 'Luxury Wellness & Romance Travels',
-                      category: 'Uniquely 4U · Healthier',
-                      description: 'Intimate thermal springs, coastal sanctuaries, and private couples retreats designed for deep rejuvenation.'
-                    })}
-                    className="footer-link"
-                    style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}
-                  >
-                    Romance & Wellness Travels
-                  </button>
+                  <a href="#hot-news" className="footer-link">Hot News · Culture & Kyoto Courtyards →</a>
                 </li>
                 <li>
-                  <a href="#featured-tours" className="footer-link">Special Combos (Yacht & Villa)</a>
+                  <a href="#hot-news" className="footer-link">Hot News · Science of Thermal Longevity →</a>
                 </li>
                 <li>
-                  <a href="#destinations" className="footer-link">Private Helicopter Charters</a>
+                  <a href="#hot-news" className="footer-link">Wealth Wisdom · The SMART Owner Mindset →</a>
+                </li>
+                <li>
+                  <a href="#kollections" className="footer-link">Kollections 4U · Curated Editions & Wellness Craft →</a>
                 </li>
               </ul>
             </div>
 
+            {/* Quick Action Concierge Button */}
             <div>
-              <h3 className="typo-h3" style={{ color: '#fffdf9', marginBottom: '16px', fontSize: '18px' }}>
-                Hot News & Kollections
-              </h3>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <li>
-                  <a href="#hot-news" className="footer-link">Culture & Kyoto Courtyards</a>
-                </li>
-                <li>
-                  <a href="#hot-news" className="footer-link">Science of Thermal Longevity</a>
-                </li>
-                <li>
-                  <a href="#hot-news" className="footer-link">The SMART Owner Mindset</a>
-                </li>
-                <li>
-                  <a href="#kollections" className="footer-link">Botanical Silk Kimonos</a>
-                </li>
-                <li>
-                  <a href="#kollections" className="footer-link">Founders Circle Titanium Key</a>
-                </li>
-              </ul>
+              <button
+                type="button"
+                onClick={() => onOpenBooking('Private Concierge Contact')}
+                className="btn-primary"
+                style={{
+                  padding: '12px 28px',
+                  fontSize: '16px',
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 18px rgba(212, 175, 55, 0.25)'
+                }}
+              >
+                Book a Tour / Contact Bureau
+              </button>
             </div>
           </div>
         </div>
@@ -153,9 +170,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenItemModal }
           color: 'rgba(255,253,249,0.7)'
         }}>
           <div>
-            © {new Date().getFullYear()} 4U Edge Up (www.4ueup.com). All rights reserved. Better · Healthier · Richer.
+            © {new Date().getFullYear()} Công ty Cổ phần Thương mại Du lịch Bốn Tối Ưu (www.4ueup.com). All rights reserved.
           </div>
-          <div style={{ display: 'flex', gap: '24px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
             <span style={{ cursor: 'pointer' }} onClick={() => onOpenItemModal({ title: 'Privacy & Discretion Protocol', category: 'Legal & Compliance', description: 'At 4U Edge Up, guest privacy, diplomatic security, and financial discretion are held to sovereign banking standards.' })}>
               Privacy Policy
             </span>
