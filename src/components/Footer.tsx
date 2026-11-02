@@ -8,11 +8,14 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenItemModal }) => {
   return (
-    <footer className="fullscreen-section site-footer" id="footer" style={{ minHeight: 'auto', padding: '80px 0 40px 0' }}>
-      <div className="container-fullbleed">
+    <footer className="site-footer" id="footer" style={{ backgroundColor: 'var(--color-olive)', color: '#fffdf9' }}>
+      {/* =====================================================================
+          MAIN FOOTER DIRECTORY & BRAND INFO (STRICT 2 COLUMNS)
+      ====================================================================== */}
+      <div className="container-fullbleed" style={{ padding: '80px clamp(24px, 4vw, 64px) 40px clamp(24px, 4vw, 64px)' }}>
         {/* STRICT 2 COLUMNS (50% / 50%) */}
         <div className="grid-2-fullscreen" style={{ marginBottom: '48px', paddingBottom: '48px', borderBottom: '1px solid rgba(255, 253, 249, 0.18)' }}>
-          {/* Column 1 of 2: Brand Story & Concierge Dispatch */}
+          {/* Column 1 of 2: Brand Story & Official Credentials */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
@@ -50,14 +53,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenItemModal }
             </div>
 
             <div>
-              <button
-                type="button"
-                onClick={() => onOpenBooking('Direct Concierge Dispatch')}
-                className="btn-primary"
-                style={{ padding: '14px 28px' }}
-              >
-                Contact Private Concierge Bureau
-              </button>
+              <span style={{ fontSize: '14px', color: 'rgba(255,253,249,0.7)' }}>
+                Private Concierge Desk · Switzerland · Japan · Italy · Vietnam
+              </span>
             </div>
           </div>
 
@@ -114,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenItemModal }
                   <a href="#featured-tours" className="footer-link">Special Combos (Yacht & Villa)</a>
                 </li>
                 <li>
-                  <a href="#luxurious-services" className="footer-link">VIP Helicopter Charters</a>
+                  <a href="#destinations" className="footer-link">Private Helicopter Charters</a>
                 </li>
               </ul>
             </div>

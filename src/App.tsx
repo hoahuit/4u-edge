@@ -12,7 +12,7 @@ import { BookingDrawer } from './components/BookingDrawer';
 import { ItemModal } from './components/ItemModal';
 import { SectionDots } from './components/SectionDots';
 import { useScrollReveal } from './hooks/useScrollReveal';
-import { useSectionSnap } from './hooks/useSectionSnap';
+import { useLenisScroll } from './hooks/useLenisScroll';
 import { ModalData } from './types';
 
 export const App: React.FC = () => {
@@ -21,9 +21,9 @@ export const App: React.FC = () => {
   const [bookingPurpose, setBookingPurpose] = useState('');
   const [modalData, setModalData] = useState<ModalData | null>(null);
 
-  // Initialize scroll reveal animations & 1-scroll-per-section snapping
+  // Initialize Lenis smooth scroll engine synchronized with GSAP ScrollTrigger
+  useLenisScroll();
   useScrollReveal();
-  useSectionSnap();
 
   const handleOpenBooking = (purpose: string = 'Private Consultation') => {
     setBookingPurpose(purpose);
