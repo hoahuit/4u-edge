@@ -47,7 +47,13 @@ export const Header: React.FC<HeaderProps> = ({
   }, []);
 
   return (
-    <header className={`site-header ${isScrolled ? 'is-scrolled' : 'is-transparent'}`} id="top">
+    <>
+      {/* Dimmed backdrop overlay when mega menu is open */}
+      <div
+        className={`mega-backdrop-overlay ${activeMenuId ? 'is-active' : ''}`}
+        onClick={() => setActiveMenuId(null)}
+      />
+      <header className={`site-header ${isScrolled ? 'is-scrolled' : 'is-transparent'} ${activeMenuId ? 'has-mega-open' : ''}`} id="top">
       {/* Main Navigation Bar */}
       <div className="container-editorial main-nav-inner">
         {/* Official Brand Logo */}
@@ -110,57 +116,7 @@ export const Header: React.FC<HeaderProps> = ({
                         </h2>
                       </div>
 
-                      {/* Quick deals navigation in header mega panel */}
-                      <div style={{ display: 'flex', gap: '18px', alignItems: 'center' }}>
-                        <a
-                          href="#featured-tours"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            onFilterBadge('Best Seller');
-                            document.getElementById('featured-tours')?.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                          className="typo-nav"
-                          style={{ fontSize: '16px' }}
-                        >
-                          Best Seller
-                        </a>
-                        <a
-                          href="#featured-tours"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            onFilterBadge('Just Released');
-                            document.getElementById('featured-tours')?.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                          className="typo-nav"
-                          style={{ fontSize: '16px' }}
-                        >
-                          Just Released
-                        </a>
-                        <a
-                          href="#featured-tours"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            onFilterBadge("Today's Deal");
-                            document.getElementById('featured-tours')?.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                          className="typo-nav"
-                          style={{ fontSize: '16px' }}
-                        >
-                          Today's Deal
-                        </a>
-                        <a
-                          href="#featured-tours"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            onFilterBadge('Last Minute');
-                            document.getElementById('featured-tours')?.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                          className="typo-nav"
-                          style={{ fontSize: '16px' }}
-                        >
-                          Last Minute
-                        </a>
-                      </div>
+                      
                     </div>
 
                     <div className="mega-grid-3">
@@ -228,7 +184,9 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div style={{
-          backgroundColor: '#fffdf9',
+          backgroundColor: 'rgba(255, 253, 249, 0.85)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
           borderTop: '1px solid rgba(150,112,3,0.22)',
           padding: '24px',
           maxHeight: '80vh',
@@ -282,6 +240,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       )}
     </header>
+    </>
   );
 };
 

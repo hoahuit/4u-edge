@@ -25,8 +25,7 @@ export const FeaturedTours: React.FC<FeaturedToursProps> = ({
     ? FEATURED_TOURS
     : FEATURED_TOURS.filter((t) => t.badge.toLowerCase() === activeBadgeFilter.toLowerCase());
 
-  const filterOptions = ['All', 'Best Seller', 'Just Released', "Today's Deal", 'Last Minute', 'Signature'];
-
+  const filterOptions = [];
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion || !sectionRef.current) return;
@@ -86,9 +85,7 @@ export const FeaturedTours: React.FC<FeaturedToursProps> = ({
           gap: '20px'
         }}>
           <div>
-            <span style={{ color: '#5b0e5d', fontWeight: 600, fontSize: '16px', display: 'block', marginBottom: '8px' }}>
-              Full-Screen Curated Editions · Strict 2 Items Per Row
-            </span>
+
             <h2 className="typo-h2" style={{ color: '#967003', margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)' }}>
               Featured Signature Tours & Bespoke Journeys
             </h2>
@@ -117,13 +114,13 @@ export const FeaturedTours: React.FC<FeaturedToursProps> = ({
               key={tour.id}
               className="tour-item-editorial"
               style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid rgba(150, 112, 3, 0.22)',
-                borderRadius: '8px',
-                padding: '28px',
+                backgroundColor: 'transparent',
+                border: 'none',
+                borderRadius: '0px',
+                padding: '0',
                 display: 'flex',
                 flexDirection: 'column',
-                boxShadow: '0 10px 30px rgba(68, 51, 0, 0.07)'
+                boxShadow: 'none'
               }}
             >
               {/* Cinematic Scale & Clip-Path Frame */}
@@ -201,7 +198,7 @@ export const FeaturedTours: React.FC<FeaturedToursProps> = ({
                   onClick={() => onOpenItemModal({
                     title: tour.title,
                     category: `Signature Itinerary · ${tour.destination}`,
-                    description: `${tour.overview}\n\nPrice: ${tour.price} per guest\nDuration: ${tour.duration}\nHighlights: ${tour.highlights.join(' • ')}`,
+                    description: `${tour.overview}\n\nPrice: ${tour.price} per guest\nDuration: ${tour.duration}\n`,
                     price: tour.price,
                     inclusions: tour.inclusions
                   })}

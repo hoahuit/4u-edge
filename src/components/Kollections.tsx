@@ -56,15 +56,13 @@ export const Kollections: React.FC<KollectionsProps> = ({
         }}>
           <div>
             <span style={{ color: '#5b0e5d', fontWeight: 600, fontSize: '16px', display: 'block', marginBottom: '8px' }}>
-              Menu 04 · Curated Editions · Strict 2 Items Per Row
+              Curated Editions
             </span>
             <h2 className="typo-h2" style={{ color: '#967003', margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)' }}>
-              Kollections 4U — Curated Travel & Wellness Editions
+              Curated Travel & Wellness Editions
             </h2>
           </div>
-          <p className="typo-body" style={{ maxWidth: '640px', color: '#666156', margin: 0, fontSize: '16px' }}>
-            Physical accoutrements and limited collector items handcrafted exclusively for 4U Edge Up journeys and executive patrons.
-          </p>
+
         </div>
 
         {/* STRICT 2 ITEMS PER ROW (FULL-SCREEN WIDTH) WITH HOVER REVEAL */}

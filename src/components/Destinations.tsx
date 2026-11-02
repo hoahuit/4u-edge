@@ -92,29 +92,22 @@ export const Destinations: React.FC<DestinationsProps> = ({ onOpenItemModal }) =
                   letterSpacing: '0.04em'
                 }}
               >
-                Cinematic 3D Gallery · Worldwide Sanctuaries
+                Worldwide Sanctuaries
               </span>
               <span style={{ color: 'rgba(150, 112, 3, 0.4)' }}>•</span>
-              <span style={{ color: '#967003', fontWeight: 600, fontSize: '14px' }}>
-                Interactive 3D Tilt
-              </span>
             </div>
 
             <h2
               className="typo-h2"
               style={{
                 color: '#967003',
-                margin: '0 0 10px 0',
+                margin: '0',
                 fontSize: 'clamp(28px, 3.4vw, 46px)',
                 lineHeight: 1.15
               }}
             >
               Curated Destinations Across the Globe
             </h2>
-
-            <p className="typo-body" style={{ maxWidth: '640px', color: '#4a473f', margin: 0, fontSize: '16px', lineHeight: 1.6 }}>
-              Move mouse over cards for true 3D perspective depth, dynamic lighting reflection, and layered landscape views.
-            </p>
           </div>
 
           {/* Navigation Controls: Active Counter & Circular Gold Arrows */}
@@ -269,11 +262,7 @@ export const Destinations: React.FC<DestinationsProps> = ({ onOpenItemModal }) =
             ))}
           </div>
 
-          {/* Interaction Hint */}
-          <div style={{ fontSize: '13px', color: '#666156', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ color: '#ffd700' }}>✦</span>
-            <span>Hover card to activate 3D tilt & lighting • Drag or use arrows to navigate</span>
-          </div>
+
         </div>
       </div>
     </section>

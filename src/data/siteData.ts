@@ -4,7 +4,7 @@ export const MEGA_MENUS: MegaMenu[] = [
   {
     id: 'uniquely-4u',
     label: 'Uniquely 4U',
-    menuNumber: 'Menu 01',
+    menuNumber: '',
     subtitle: 'Core Pillars',
     columns: [
       {
@@ -67,7 +67,7 @@ export const MEGA_MENUS: MegaMenu[] = [
   {
     id: 'luxurious-services',
     label: 'Luxurious Services',
-    menuNumber: 'Menu 02',
+    menuNumber: '',
     subtitle: 'Bespoke Offerings',
     columns: [
       {
@@ -77,19 +77,16 @@ export const MEGA_MENUS: MegaMenu[] = [
             title: 'Sản phẩm 1 — Mediterranean Yacht & Villa Combo',
             category: 'Luxurious Services · Special Combo',
             description: 'A seamless 9-day combination of private Amalfi cliffside living and custom Riva yacht charter.',
-            isTemp: true
           },
           {
             title: 'Sản phẩm 2 — Alpine Thermal & Helicopter Retreat',
             category: 'Luxurious Services · Special Combo',
             description: 'Private glacier transfers paired with five-star holistic longevity suites in the Dolomites.',
-            isTemp: true
           },
           {
             title: 'Sản phẩm 3 — Executive Retreat & Heritage Golf',
             category: 'Luxurious Services · Special Combo',
             description: 'All-inclusive C-suite hospitality combining championship coastal links and private dining.',
-            isTemp: true
           }
         ]
       },
@@ -100,13 +97,11 @@ export const MEGA_MENUS: MegaMenu[] = [
             title: 'Yoga Health Consultancy for Natural Healing',
             category: 'Luxurious Services · Transportations (Temp)',
             description: 'Currently assigned as a temporary item under Transportations; ready for future fleet & charter update.',
-            isTemp: true
           },
           {
             title: 'Luxury Wellness & Romance Travels',
             category: 'Luxurious Services · Transportations (Temp)',
             description: 'Currently assigned as a temporary item under Transportations; ready for future chauffeured service update.',
-            isTemp: true
           }
         ]
       },
@@ -117,19 +112,16 @@ export const MEGA_MENUS: MegaMenu[] = [
             title: 'Event Management',
             category: 'Luxurious Services · Excursions (Temp)',
             description: 'Private destination excursions and gala staging across iconic cultural landmarks.',
-            isTemp: true
           },
           {
             title: 'Business Networking',
             category: 'Luxurious Services · Excursions (Temp)',
             description: 'Executive field excursions combining leisure discovery with high-level networking.',
-            isTemp: true
           },
           {
             title: 'Factory visits',
             category: 'Luxurious Services · Excursions (Temp)',
             description: 'Curated industrial and artisan workshops tours with private interpretation and logistics.',
-            isTemp: true
           }
         ]
       }
@@ -138,7 +130,7 @@ export const MEGA_MENUS: MegaMenu[] = [
   {
     id: 'hot-news',
     label: 'Hot News',
-    menuNumber: 'Menu 03',
+    menuNumber: '',
     subtitle: 'Editorial Journal',
     columns: [
       {
@@ -148,19 +140,16 @@ export const MEGA_MENUS: MegaMenu[] = [
             title: 'Content Blog 1 — Hidden Courtyards of Kyoto & Hue',
             category: 'Hot News · Culture & Discovery',
             description: 'An intimate architectural dialogue between imperial garden sanctuaries and living craft traditions.',
-            isTemp: true
           },
           {
             title: 'Content Blog 2 — Private Vineyard Harvests in Piedmont',
             category: 'Hot News · Culture & Discovery',
             description: 'Following white truffle hunters and third-generation cellar masters through autumn mist.',
-            isTemp: true
           },
           {
             title: 'Content Blog 3 — Navigating the Aegean by Traditional Caique',
             category: 'Hot News · Culture & Discovery',
             description: 'Slow island hopping away from cruise ports into untouched Cycladic coves.',
-            isTemp: true
           }
         ]
       },
@@ -171,19 +160,16 @@ export const MEGA_MENUS: MegaMenu[] = [
             title: 'Content Blog 4 — The Science of Thermal Longevity',
             category: 'Hot News · Retreat & Wellness',
             description: 'How mineral hydrotherapy and circadian nutrition reset executive burnout in 7 days.',
-            isTemp: true
           },
           {
             title: 'Content Blog 5 — Ayurvedic Pranayama for Frequent Flyers',
             category: 'Hot News · Retreat & Wellness',
             description: 'Restoring nervous system equilibrium across long-haul time zones.',
-            isTemp: true
           },
           {
             title: 'Content Blog 6 — Designing Romance in Secluded Sanctuaries',
             category: 'Hot News · Retreat & Wellness',
             description: 'Why privacy and unscripted time remain the ultimate luxury for modern couples.',
-            isTemp: true
           }
         ]
       },
@@ -194,19 +180,16 @@ export const MEGA_MENUS: MegaMenu[] = [
             title: 'Content Blog 7 — The SMART Owner Mindset in 2026',
             category: 'Hot News · Financial Wisdom',
             description: 'Transitioning from daily operator to strategic portfolio owner through delegation and mentorship.',
-            isTemp: true
           },
           {
             title: 'Content Blog 8 — Evaluating Cross-Border Supply Chains',
             category: 'Hot News · Financial Wisdom',
             description: 'Key insights gathered from our executive factory visits across Southeast Asia.',
-            isTemp: true
           },
           {
             title: 'Content Blog 9 — Investing in Experiential Hospitality',
             category: 'Hot News · Financial Wisdom',
             description: 'Why wellness real estate and boutique retreats outperform conventional asset classes.',
-            isTemp: true
           }
         ]
       }
@@ -215,7 +198,7 @@ export const MEGA_MENUS: MegaMenu[] = [
   {
     id: 'kollections-4u',
     label: 'Kollections 4U',
-    menuNumber: 'Menu 04',
+    menuNumber: '',
     subtitle: 'Curated Editions',
     columns: [
       {
@@ -225,19 +208,16 @@ export const MEGA_MENUS: MegaMenu[] = [
             title: 'Item 1 — Botanical Silk Travel Kimono',
             category: 'Kollections 4U · New Arrivals',
             description: 'Hand-loomed mulberry silk resort robe dyed with organic botanical extracts.',
-            isTemp: true
           },
           {
             title: 'Item 2 — Sovereign Leather Passport Folio',
             category: 'Kollections 4U · New Arrivals',
             description: 'Full-grain saddle leather travel organizer embossed with subtle 4U Edge Up detailing.',
-            isTemp: true
           },
           {
             title: 'Item 3 — Himalayan Copper Singing Bowl Set',
             category: 'Kollections 4U · New Arrivals',
             description: 'Hand-hammered acoustic meditation vessel selected by our natural healing consultants.',
-            isTemp: true
           }
         ]
       },
@@ -248,19 +228,16 @@ export const MEGA_MENUS: MegaMenu[] = [
             title: 'Item 4 — Essential Aromatherapy Flight Kit',
             category: 'Kollections 4U · Must-have',
             description: 'Wildcrafted frankincense, neroli, and altitude hydration elixirs for private aviation.',
-            isTemp: true
           },
           {
             title: 'Item 5 — Natural Cork & Linen Yoga Mat',
             category: 'Kollections 4U · Must-have',
             description: 'Antimicrobial sustainably harvested Portuguese cork mat for retreat practice.',
-            isTemp: true
           },
           {
             title: 'Item 6 — SMART Owner Strategic Journal',
             category: 'Kollections 4U · Must-have',
             description: 'Archival linen-bound quarterly planner structured around our mentoring methodology.',
-            isTemp: true
           }
         ]
       },
@@ -271,62 +248,22 @@ export const MEGA_MENUS: MegaMenu[] = [
             title: 'Item 7 — Founders Circle Titanium Card',
             category: 'Kollections 4U · Exclusive',
             description: 'Priority concierge key unlocking private villa upgrades and diplomatic airport fast-track.',
-            isTemp: true
           },
           {
             title: 'Item 8 — Bespoke Trunk by Artisan Atelier',
             category: 'Kollections 4U · Exclusive',
             description: 'Made-to-order cabin luggage crafted to your personal itinerary specifications.',
-            isTemp: true
           },
           {
             title: 'Item 9 — Private Cellar Vintage Reserve',
             category: 'Kollections 4U · Exclusive',
             description: 'Numbered collector bottles reserved exclusively for 4U Edge Up summit patrons.',
-            isTemp: true
           }
         ]
       }
     ]
   },
-  {
-    id: 'about-4u',
-    label: 'About 4U Edge Up',
-    menuNumber: 'Menu 05',
-    subtitle: 'Our Story & Leadership',
-    columns: [
-      {
-        title: 'Vision & Mission',
-        items: [
-          {
-            title: 'Vision & Mission',
-            category: 'About 4U Edge Up',
-            description: 'Empowering discerning individuals and business owners to live Better, Healthier, and Richer through transformative travel, natural healing, and global business connectivity.'
-          }
-        ]
-      },
-      {
-        title: '4U Team',
-        items: [
-          {
-            title: '4U Team',
-            category: 'About 4U Edge Up',
-            description: 'An international collective of luxury travel architects, certified yoga & natural healing consultants, and executive business mentors.'
-          }
-        ]
-      },
-      {
-        title: 'How can 4U help You?',
-        items: [
-          {
-            title: 'How can 4U help You?',
-            category: 'About 4U Edge Up',
-            description: 'Whether designing a romantic wellness sabbatical, mentoring you into a SMART Owner, or organizing an international factory delegation.'
-          }
-        ]
-      }
-    ]
-  }
+
 ];
 
 export const HERO_SCENES: HeroScene[] = [
@@ -587,7 +524,6 @@ export const HOT_NEWS_ARTICLES: HotNewsItem[] = [
     readTime: '6 min read',
     date: 'Nov 2026',
     image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   },
   {
     id: 'news-2',
@@ -597,7 +533,6 @@ export const HOT_NEWS_ARTICLES: HotNewsItem[] = [
     readTime: '8 min read',
     date: 'Oct 2026',
     image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   },
   {
     id: 'news-3',
@@ -607,7 +542,6 @@ export const HOT_NEWS_ARTICLES: HotNewsItem[] = [
     readTime: '7 min read',
     date: 'Nov 2026',
     image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   },
   {
     id: 'news-4',
@@ -617,7 +551,6 @@ export const HOT_NEWS_ARTICLES: HotNewsItem[] = [
     readTime: '5 min read',
     date: 'Oct 2026',
     image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   },
   {
     id: 'news-5',
@@ -627,7 +560,6 @@ export const HOT_NEWS_ARTICLES: HotNewsItem[] = [
     readTime: '9 min read',
     date: 'Nov 2026',
     image: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   },
   {
     id: 'news-6',
@@ -637,7 +569,6 @@ export const HOT_NEWS_ARTICLES: HotNewsItem[] = [
     readTime: '10 min read',
     date: 'Sep 2026',
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   }
 ];
 
@@ -650,7 +581,6 @@ export const KOLLECTIONS_ITEMS: KollectionItem[] = [
     price: '$480',
     badge: 'Limited Run',
     image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   },
   {
     id: 'kol-2',
@@ -660,7 +590,6 @@ export const KOLLECTIONS_ITEMS: KollectionItem[] = [
     price: '$320',
     badge: 'New Edition',
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   },
   {
     id: 'kol-3',
@@ -670,7 +599,6 @@ export const KOLLECTIONS_ITEMS: KollectionItem[] = [
     price: '$260',
     badge: 'Bestseller',
     image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   },
   {
     id: 'kol-4',
@@ -680,7 +608,6 @@ export const KOLLECTIONS_ITEMS: KollectionItem[] = [
     price: '$190',
     badge: 'Eco Luxe',
     image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   },
   {
     id: 'kol-5',
@@ -690,7 +617,6 @@ export const KOLLECTIONS_ITEMS: KollectionItem[] = [
     price: 'Invitation Only',
     badge: 'Patron',
     image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   },
   {
     id: 'kol-6',
@@ -700,6 +626,5 @@ export const KOLLECTIONS_ITEMS: KollectionItem[] = [
     price: '$3,800',
     badge: 'Custom Made',
     image: 'https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?auto=format&fit=crop&w=800&q=80',
-    isTemp: true
   }
 ];

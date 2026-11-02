@@ -31,7 +31,7 @@ export const LuxuriousServices: React.FC<LuxuriousServicesProps> = ({
         }}>
           <div>
             <span style={{ color: '#5b0e5d', fontWeight: 600, fontSize: '16px', display: 'block', marginBottom: '8px' }}>
-              Menu 02 · Bespoke Offerings · Strict 2 Columns
+              Bespoke Offerings
             </span>
             <h2 className="typo-h2" style={{ color: '#967003', margin: 0 }}>
               Luxurious Services & Private Delegations

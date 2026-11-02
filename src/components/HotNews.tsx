@@ -13,7 +13,7 @@ interface HotNewsProps {
 export const HotNews: React.FC<HotNewsProps> = ({ onOpenItemModal }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const sectionRef = useRef<HTMLElement>(null);
-  const categories = ['All', 'Culture & Discovery', 'Retreat & Wellness', 'Financial Wisdom'];
+  const categories = [];
 
   const filteredArticles = selectedCategory === 'All'
     ? HOT_NEWS_ARTICLES
@@ -58,7 +58,7 @@ export const HotNews: React.FC<HotNewsProps> = ({ onOpenItemModal }) => {
         }}>
           <div>
             <span style={{ color: '#5b0e5d', fontWeight: 600, fontSize: '16px', display: 'block', marginBottom: '8px' }}>
-              Menu 03 · Editorial Journal · Strict 2 Items Per Row
+              Editorial Journal
             </span>
             <h2 className="typo-h2" style={{ color: '#967003', margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)' }}>
               Hot News, Wellness Insights & Wealth Wisdom
